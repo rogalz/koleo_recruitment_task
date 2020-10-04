@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Koleo recruitment task</string>
+    <string name="appAuthor">Jakub Rogala</string>
+    <string name="splashDescription">Recruitment task</string>
+    <string name="starting_station">Starting station</string>
+    <string name="destination">Destination</string>
 </resources>

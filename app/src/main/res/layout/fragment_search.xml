@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/splashBackground"
+    tools:context=".searchfragment.SearchFragment">
+
+    <AutoCompleteTextView
+        android:id="@+id/startStationSearchET"
+        style="@style/EditTextStyle"
+        android:hint="@string/starting_station"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <AutoCompleteTextView
+        android:id="@+id/endStationSearchET"
+        style="@style/EditTextStyle"
+        android:hint="@string/destination"
+        app:layout_constraintTop_toBottomOf="@id/startStationSearchET" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
