@@ -2,11 +2,13 @@ package sh.surge.jakub.koleorecruitmenttask.data.station
 
 import androidx.annotation.Keep
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Keep
 @Entity(tableName = "station")
 data class Station(
+    @PrimaryKey
     val id: Int,
     val name: String,
     @SerializedName("name_slug")

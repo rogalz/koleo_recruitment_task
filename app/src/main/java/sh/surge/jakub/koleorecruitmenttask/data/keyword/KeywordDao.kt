@@ -10,8 +10,8 @@ import androidx.room.Query
 interface KeywordDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(keywords:List<Keyword>)
+    fun insertAll(keywords: List<Keyword>)
 
     @Query("SELECT * FROM keyword")
-    fun getAllKeywords():LiveData<List<Keyword>>
+    fun getAllKeywords(): LiveData<List<Keyword>>
 }
