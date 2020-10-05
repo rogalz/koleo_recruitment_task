@@ -4,4 +4,5 @@
     <string name="splashDescription">Recruitment task</string>
     <string name="starting_station">Starting station</string>
     <string name="destination">Destination</string>
+    <string name="you_are_offline">You are offline</string>
 </resources>

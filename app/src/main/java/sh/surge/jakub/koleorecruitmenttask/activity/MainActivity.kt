@@ -5,10 +5,12 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import kotlinx.coroutines.*
 import sh.surge.jakub.koleorecruitmenttask.R
 import sh.surge.jakub.koleorecruitmenttask.activity.vm.MainViewModel
 import sh.surge.jakub.koleorecruitmenttask.di.AppModule
 import sh.surge.jakub.koleorecruitmenttask.di.DaggerAppComponent
+import sh.surge.jakub.koleorecruitmenttask.utils.ConnectionListener
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -35,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupDependencyInjection() {
-        DaggerAppComponent.builder().appModule(AppModule()).build().inject(this)
+        DaggerAppComponent.builder().appModule(AppModule(this)).build().inject(this)
     }
 
     private fun setNavController() {
@@ -43,9 +45,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getDataAndSkipSplash() {
-        viewModel.liveData.observe(this, {
-            if (!it.isNullOrEmpty()) navController.navigate(R.id.action_splashFragment_to_searchFragment)
+        showToastOrDownloadData()
+
+        viewModel.observeStationsAndKeywords.observe(this@MainActivity, {
+            if (!it.first.isNullOrEmpty() && !it.second.isNullOrEmpty())
+                GlobalScope.launch {
+                    withContext(Dispatchers.Main) {
+                        delay(1500)
+                        navController.navigate(R.id.action_splashFragment_to_searchFragment)
+                    }
+                }
         })
+    }
+
+    private fun showToastOrDownloadData() {
+        ConnectionListener().enable(this) { viewModel.updateDataIfNeeded() }
     }
 
     override fun onResume() {

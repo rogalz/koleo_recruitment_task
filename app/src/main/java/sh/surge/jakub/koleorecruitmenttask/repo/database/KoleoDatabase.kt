@@ -29,5 +29,3 @@ abstract class KoleoDatabase : RoomDatabase() {
                 .build()
     }
 }
-
-
