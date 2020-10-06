@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/stationName"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:ellipsize="end"
-    android:maxLines="1"
-    android:padding="@dimen/smallSpace"
-    android:textSize="14sp"
-    tools:text="Szczecin Port CentralnySzczecin Port CentralnySzczecin Port CentralnySzczecin Port CentralnySzczecin Port Centralny" />
+    android:padding="@dimen/smallSpace">
+
+    <TextView
+        android:id="@+id/stationName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-medium"
+        android:maxLines="1"
+        android:textSize="@dimen/largeTextSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/lorem[15]" />
+
+    <TextView
+        android:id="@+id/stationLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/smallSpace"
+        android:fontFamily="sans-serif-light"
+        android:textSize="@dimen/mediumTextSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stationName"
+        tools:text="@tools:sample/lorem[3]" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
