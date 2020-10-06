@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Koleo recruitment task</string>
+    <string name="appAuthor">Jakub Rogala</string>
+    <string name="splashDescription">Recruitment task</string>
+    <string name="starting_station">Starting station</string>
+    <string name="destination">Destination</string>
+    <string name="you_are_offline">You are offline</string>
+    <string name="the_distance_is">The distance is:</string>
 </resources>
