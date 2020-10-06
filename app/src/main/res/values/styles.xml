@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -19,6 +19,7 @@
         <item name="android:layout_marginStart">@dimen/mediumSpace</item>
         <item name="android:layout_marginEnd">@dimen/mediumSpace</item>
         <item name="android:textColor">@color/black_alpha_63</item>
+        <item name="android:completionThreshold">3</item>
     </style>
 
 </resources>
