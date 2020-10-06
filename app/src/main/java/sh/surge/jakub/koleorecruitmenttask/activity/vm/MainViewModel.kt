@@ -2,8 +2,7 @@ package sh.surge.jakub.koleorecruitmenttask.activity.vm
 
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.launch
+import ext.launchIO
 import sh.surge.jakub.koleorecruitmenttask.repo.MainRepository
 import sh.surge.jakub.koleorecruitmenttask.utils.Const
 import javax.inject.Inject
@@ -15,7 +14,7 @@ class MainViewModel @Inject constructor(
     val observeStationsAndKeywords = repository.stationAndKeywords
 
     fun updateDataIfNeeded() {
-        viewModelScope.launch {
+        launchIO {
             val currentTime = System.currentTimeMillis()
             val lastTimeOfUpdate = sharedPreferences.getLong(Const.SHARED_PREFERENCES_KEY, 0)
             val nextUpdateTime = lastTimeOfUpdate + Const.MILLIS_24h
