@@ -3,7 +3,6 @@ package sh.surge.jakub.koleorecruitmenttask.activity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import kotlinx.coroutines.*
@@ -48,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     private fun getDataAndSkipSplash() {
         showToastOrDownloadData()
 
-        viewModel.observeStationsAndKeywords.observe(this@MainActivity, Observer {
+        viewModel.observeStationsAndKeywords.observe(this@MainActivity, {
             if (!it.first.isNullOrEmpty() && !it.second.isNullOrEmpty())
                 GlobalScope.launch {
                     withContext(Dispatchers.Main) {

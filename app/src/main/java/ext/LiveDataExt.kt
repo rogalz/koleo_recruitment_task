@@ -3,7 +3,6 @@ package ext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 
-
 fun <F, S> LiveData<F>.zipLiveData(liveData: LiveData<S>): LiveData<Pair<F, S>> {
     return MediatorLiveData<Pair<F, S>>().apply {
         var lastA: F? = null

@@ -21,7 +21,7 @@ class SearchViewModel(private var repository: MainRepository) : ViewModel() {
     fun getDistance(startStation: Station?, endStation: Station?): String {
         var tempString = ""
         if (startStation != null && endStation != null) {
-         val tempDistance = distance(startStation.latitude, startStation.longitude, endStation.latitude, endStation.longitude)
+            val tempDistance = distance(startStation.latitude, startStation.longitude, endStation.latitude, endStation.longitude)
             tempString = String.format("%.2f", tempDistance)
         }
         return "$tempString km"
