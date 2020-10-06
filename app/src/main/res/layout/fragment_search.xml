@@ -18,4 +18,26 @@
         style="@style/EditTextStyle"
         android:hint="@string/destination"
         app:layout_constraintTop_toBottomOf="@id/startStationSearchET" />
+
+    <TextView
+        android:id="@+id/distanceBetweenStationsDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/mediumSpace"
+        android:text="@string/the_distance_is"
+        android:textSize="@dimen/largeTextSize"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/endStationSearchET" />
+
+    <TextView
+        android:id="@+id/distanceBetweenStationsValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/mediumSpace"
+        android:gravity="center"
+        android:textSize="72sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/distanceBetweenStationsDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>

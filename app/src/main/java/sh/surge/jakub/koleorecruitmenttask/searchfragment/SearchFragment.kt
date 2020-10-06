@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import ext.observeText
 import ext.setOnclickListenerAndGetItem
+import ext.zipLiveData
 import kotlinx.android.synthetic.main.fragment_search.*
 import sh.surge.jakub.koleorecruitmenttask.R
+import sh.surge.jakub.koleorecruitmenttask.data.station.Station
 import sh.surge.jakub.koleorecruitmenttask.di.AppModule
 import sh.surge.jakub.koleorecruitmenttask.di.DaggerAppComponent
 import javax.inject.Inject
@@ -19,10 +21,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupDagger()
         observeEditTexts()
         onListenOnItemClicks()
-        DaggerAppComponent.builder().appModule(AppModule(requireContext())).build().inject(this)
     }
+
+    private fun setupDagger() = DaggerAppComponent.builder().appModule(AppModule(requireContext())).build().inject(this)
 
     private fun observeEditTexts() {
         startStationSearchET.observeText(this::getStationWithNameForStartStation)
@@ -46,7 +50,15 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun onListenOnItemClicks() {
-        startStationSearchET.setOnclickListenerAndGetItem()
-        endStationSearchET.setOnclickListenerAndGetItem()
+        startStationSearchET.setOnclickListenerAndGetItem().zipLiveData(endStationSearchET.setOnclickListenerAndGetItem()).observe(viewLifecycleOwner,
+            Observer {
+                calculateDistance(it.first, it.second)
+            })
+    }
+
+    private fun calculateDistance(startStation: Station?, endStation: Station?) {
+        distanceBetweenStationsValue.text = viewModel.getDistance(startStation, endStation)
+        distanceBetweenStationsDescription.visibility = View.VISIBLE
+
     }
 }

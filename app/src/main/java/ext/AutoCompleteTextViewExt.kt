@@ -4,6 +4,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import sh.surge.jakub.koleorecruitmenttask.data.station.Station
 
 fun AutoCompleteTextView.observeText(onTextChange: (text: CharSequence) -> Unit) {
@@ -22,11 +24,13 @@ fun AutoCompleteTextView.observeText(onTextChange: (text: CharSequence) -> Unit)
     })
 }
 
-fun AutoCompleteTextView.setOnclickListenerAndGetItem(): Station? {
-    var station: Station? = null
+fun AutoCompleteTextView.setOnclickListenerAndGetItem(): LiveData<Station?> {
+    val stationLiveData = MutableLiveData<Station>()
+
     onItemClickListener = AdapterView.OnItemClickListener { parent, _, position, _ ->
-        station = (parent?.getItemAtPosition(position) as Station)
-        setText(station?.name)
+        val tempStation = (parent?.getItemAtPosition(position) as Station)
+        setText(tempStation.name)
+        stationLiveData.postValue(tempStation)
     }
-    return station
+    return stationLiveData
 }
