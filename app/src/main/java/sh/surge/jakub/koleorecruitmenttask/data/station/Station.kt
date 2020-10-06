@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Keep
-@Entity(tableName = "station")
+@Entity(tableName = "stations")
 data class Station(
     @PrimaryKey
     val id: Int,

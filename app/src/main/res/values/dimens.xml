@@ -3,4 +3,6 @@
     <dimen name="smallSpace">8dp</dimen>
     <dimen name="mediumSpace">16dp</dimen>
     <dimen name="smallTextSize">8sp</dimen>
+    <dimen name="mediumTextSize">12sp</dimen>
+    <dimen name="largeTextSize">16sp</dimen>
 </resources>

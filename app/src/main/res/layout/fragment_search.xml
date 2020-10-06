@@ -18,6 +18,4 @@
         style="@style/EditTextStyle"
         android:hint="@string/destination"
         app:layout_constraintTop_toBottomOf="@id/startStationSearchET" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

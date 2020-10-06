@@ -15,6 +15,9 @@ class MainRepository @Inject constructor(
     private var apiService: KoleoApiService,
     private var database: KoleoDatabase
 ) {
+    val keywords = database.keywordDao().getAllKeywords()
+    val stations = database.stationDao().getAllStations()
+    val stationAndKeywords: LiveData<Pair<List<Keyword>, List<Station>>> = keywords.zipLiveData(stations)
 
     suspend fun getAndSaveData(): Boolean {
         try {
@@ -37,7 +40,8 @@ class MainRepository @Inject constructor(
         return response.isSuccessful
     }
 
-    val stationAndKeywords: LiveData<Pair<List<Keyword>, List<Station>>> =
-        database.keywordDao().getAllKeywords()
-            .zipLiveData(database.stationDao().getAllStations())
+    suspend fun getStationWithKeyword(text: CharSequence): List<Station> {
+        val stationsIdList = database.keywordDao().getKeywordsStartedWith(text.toString()).map { it.stationId }
+        return database.stationDao().getStationsWithId(stationsIdList)
+    }
 }
