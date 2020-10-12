@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
-import sh.surge.jakub.koleorecruitmenttask.activity.vm.MainViewModel
 import sh.surge.jakub.koleorecruitmenttask.repo.MainRepository
 import sh.surge.jakub.koleorecruitmenttask.repo.database.KoleoDatabase
 import sh.surge.jakub.koleorecruitmenttask.repo.networking.KoleoApiService

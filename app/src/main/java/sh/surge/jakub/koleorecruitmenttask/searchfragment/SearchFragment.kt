@@ -3,7 +3,6 @@ package sh.surge.jakub.koleorecruitmenttask.searchfragment
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import ext.observeText
 import ext.setOnclickListenerAndGetItem
 import ext.zipLiveData
@@ -34,7 +33,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun getStationWithNameForStartStation(text: CharSequence) {
-        viewModel.getStationWithKeyword(text).observe(viewLifecycleOwner, Observer {
+        viewModel.getStationWithKeyword(text).observe(viewLifecycleOwner, {
             val adapter = AutoCompleteAdapter(this.requireContext())
             adapter.updateList(it)
             startStationSearchET.setAdapter(adapter)
@@ -42,7 +41,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun getStationWithNameForEndStation(text: CharSequence) {
-        viewModel.getStationWithKeyword(text).observe(viewLifecycleOwner, Observer {
+        viewModel.getStationWithKeyword(text).observe(viewLifecycleOwner, {
             val adapter = AutoCompleteAdapter(this.requireContext())
             adapter.updateList(it)
             endStationSearchET.setAdapter(adapter)
@@ -51,7 +50,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
     private fun onListenOnItemClicks() {
         startStationSearchET.setOnclickListenerAndGetItem().zipLiveData(endStationSearchET.setOnclickListenerAndGetItem()).observe(viewLifecycleOwner,
-            Observer {
+            {
                 calculateDistance(it.first, it.second)
             })
     }
