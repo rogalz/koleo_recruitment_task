@@ -19,7 +19,6 @@
         <item name="android:layout_marginStart">@dimen/mediumSpace</item>
         <item name="android:layout_marginEnd">@dimen/mediumSpace</item>
         <item name="android:textColor">@color/black_alpha_63</item>
-        <item name="android:completionThreshold">3</item>
     </style>
 
 </resources>

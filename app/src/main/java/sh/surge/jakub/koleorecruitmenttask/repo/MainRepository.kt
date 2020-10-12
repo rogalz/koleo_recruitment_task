@@ -40,8 +40,6 @@ class MainRepository @Inject constructor(
         return response.isSuccessful
     }
 
-    suspend fun getStationWithKeyword(text: CharSequence): List<Station> {
-        val stationsIdList = database.keywordDao().getKeywordsStartedWith(text.toString()).map { it.stationId }
-        return database.stationDao().getStationsWithId(stationsIdList)
-    }
+    suspend fun getStationWithKeyword(text: CharSequence): List<Station> = database.stationDao().getStationsWithId(text.toString())
+
 }
