@@ -15,6 +15,6 @@ interface StationDao {
     @Query("SELECT * FROM stations")
     fun getAllStations(): LiveData<List<Station>>
 
-    @Query("SELECT * FROM stations WHERE id IN(:stationsIdList)")
+    @Query("SELECT * FROM stations WHERE id IN(:stationsIdList) ORDER by hits DESC")
     suspend fun getStationsWithId(stationsIdList: List<Int>): List<Station>
 }
